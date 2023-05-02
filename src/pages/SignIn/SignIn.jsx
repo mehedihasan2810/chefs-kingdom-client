@@ -1,7 +1,11 @@
 import GoogleButton from "react-google-button";
-import "./SignIn.css";
 import { Link } from "react-router-dom";
+import "./SignIn.css";
 const SignIn = () => {
+ 
+
+
+
   return (
     <section>
       <div className="signin-container">
@@ -24,7 +28,12 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <p className="account">Don&#39;t have an account? <Link className="acc" to='/signup'>SingUp</Link></p>
+        <p className="account">
+          Don&#39;t have an account?{" "}
+          <Link className="acc" to="/signup">
+            SingUp
+          </Link>
+        </p>
         <div className="section-title">
           <div className="line"></div>
           <h4>OR</h4>
