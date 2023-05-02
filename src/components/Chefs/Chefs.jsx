@@ -6,7 +6,7 @@ const Chefs = () => {
   console.log(data);
   return (
     <div className="center-container">
-      <div className="chefs-container">
+      <section className="chefs-container">
         <div className="section-title">
           <div className="line"></div>
           <h2>Master Chefs</h2>
@@ -23,7 +23,7 @@ const Chefs = () => {
           <ChefsCard />
           <ChefsCard /> */}
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/root.layout";
 import Home from "../pages/Home/Home";
 import Cuisines from "../pages/Cuisines/Cuisines";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
   {
@@ -11,12 +13,21 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('https://chefs-kingdom-server.vercel.app/chefs')
+        loader: () => fetch("https://chefs-kingdom-server.vercel.app/chefs"),
       },
       {
         path: "/chefs/:id",
         element: <Cuisines />,
-        loader: ({params}) => fetch(`https://chefs-kingdom-server.vercel.app/chefs/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://chefs-kingdom-server.vercel.app/chefs/${params.id}`),
+      },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },
