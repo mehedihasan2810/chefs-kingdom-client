@@ -1,0 +1,62 @@
+.card-container {
+  width: 300px;
+  border: 1px solid #0071f36d;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 0 5px #0071f32e ;
+}
+
+.img-container {
+  position: relative;
+}
+.chefsCard-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.bg-img {
+  position: absolute;
+  top: -5px;
+  left: 8px;
+  z-index: -1;
+  background: #0070f3;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.star {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  z-index: 10;
+  color: #0070f3;
+}
+
+h4 {
+  font-size: 25px;
+  color: #0070f3;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+p {
+  color: rgb(101, 98, 98);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+button {
+  font: inherit;
+  padding: 0.7rem 1rem;
+  margin-top: 1rem;
+  border: 1px solid #0070f3;
+  color: #0070f3;
+  background: transparent;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+button:hover {
+  background: #0070f3;
+  color: #ffffff;
+}
