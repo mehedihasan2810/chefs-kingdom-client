@@ -1,9 +1,15 @@
-.signup {
+.signup-container {
   width: 500px;
   box-shadow: 0 0 1px 1px #0071f32e;
-  margin: 100px auto;
+  margin: 80px auto;
   padding: 1.5rem;
   border-radius: 4px;
+}
+
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
 }
 
 .signup > * + * {
@@ -23,7 +29,7 @@
 }
 
 .signup input {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
   font-size: 1.1rem;
   border: 1px solid #0071f32e;
   border-radius: 4px;
@@ -36,5 +42,28 @@
 }
 
 .signup button {
-    width: 100%;
+  width: 100%;
+}
+
+.google-btn {
+  width: 100% !important;
+  /* margin-top: 0.5rem; */
+}
+
+.signup-container .section-title {
+  margin: 2rem 0;
+}
+
+.github {
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+  background: #25292e;
+  color: #ffffff;
+  margin-top: 1rem;
+  border: none;
+  transition: all 0.2s;
+}
+.github:hover {
+  box-shadow: 0 0 5px #25292e;
 }
