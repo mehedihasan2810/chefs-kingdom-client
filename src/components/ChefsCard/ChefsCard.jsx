@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import "./ChefsCard.css";
 import StarIcon from "@mui/icons-material/Star";
 
-const ChefsCard = ({ name, img, experience, likes, recipes }) => {
+const ChefsCard = ({ id, name, img, experience, likes, recipes }) => {
   return (
     <div className="card-container">
       <div className="img-container">
@@ -23,7 +24,9 @@ const ChefsCard = ({ name, img, experience, likes, recipes }) => {
         <p>{experience} years of experience</p>
         <p>{recipes} recipes</p>
         <p>{likes} Likes</p>
-        <button>View Recipes</button>
+        <Link to={`/chefs/${id}`}>
+          <button className="btn-primary">View Recipes</button>
+        </Link>
       </div>
     </div>
   );

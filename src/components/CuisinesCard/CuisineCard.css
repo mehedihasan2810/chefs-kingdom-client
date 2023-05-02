@@ -1,0 +1,63 @@
+.cuisineCard {
+  width: 350px;
+  padding: 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px #0071f32e;
+}
+.cuisineCard-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.cuisineCard .heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cuisineCard h4{
+    font-size: 25px;
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.cuisineCard .rating{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: gray;
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.ingredients{
+    margin-bottom: 8px;
+}
+
+.ingredients h5{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ingredients p{
+    font-size: 14px;
+    color: gray;
+}
+
+.method h5{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.method p{
+    font-size: 14px;
+    color: gray;
+}
+
+.cuisineCard button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

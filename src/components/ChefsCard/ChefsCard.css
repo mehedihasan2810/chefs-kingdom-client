@@ -1,21 +1,21 @@
 .card-container {
   width: 300px;
-  border: 1px solid #0071f36d;
+  /* border: 1px solid #0071f36d; */
   border-radius: 4px;
   padding: 1rem;
-  box-shadow: 0 0 5px #0071f32e ;
+  box-shadow: 0 0 1px 1px #0071f32e;
 }
 
-.img-container {
+.card-container .img-container {
   position: relative;
 }
-.chefsCard-img {
+.card-container .chefsCard-img {
   width: 180px;
   height: 180px;
   border-radius: 50%;
 }
 
-.bg-img {
+.card-container .bg-img {
   position: absolute;
   top: -5px;
   left: 8px;
@@ -26,7 +26,7 @@
   border-radius: 50%;
 }
 
-.star {
+.card-container .star {
   position: absolute;
   top: 10px;
   left: -5px;
@@ -34,19 +34,19 @@
   color: #0070f3;
 }
 
-h4 {
+.card-container h4 {
   font-size: 25px;
   color: #0070f3;
   font-weight: 500;
   margin-bottom: 10px;
 }
-p {
+.card-container p {
   color: rgb(101, 98, 98);
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-button {
+.btn-primary {
   font: inherit;
   padding: 0.7rem 1rem;
   margin-top: 1rem;
@@ -56,7 +56,7 @@ button {
   transition: all 0.3s;
   border-radius: 4px;
 }
-button:hover {
+.btn-primary:hover {
   background: #0070f3;
   color: #ffffff;
 }
