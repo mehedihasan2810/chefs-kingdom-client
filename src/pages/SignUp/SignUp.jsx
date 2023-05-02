@@ -1,6 +1,7 @@
 import GoogleButton from "react-google-button";
 
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <section>
@@ -32,6 +33,7 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
+        <p className="account">Already have an account? <Link className="acc" to='/signin'>SingIn</Link></p>
         <div className="section-title">
           <div className="line"></div>
           <h4>OR</h4>
@@ -39,7 +41,7 @@ const SignUp = () => {
         </div>
         <div className="google-github">
           <GoogleButton type="light" className="google-btn" />
-        <button className="github">Github</button>
+          <button className="github">Sign in with Github</button>
         </div>
       </div>
     </section>

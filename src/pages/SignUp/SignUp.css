@@ -13,7 +13,7 @@
 }
 
 .signup > * + * {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .signup .control {
@@ -37,21 +37,26 @@
   color: gray;
 }
 
+.signup input::placeholder{
+  color: rgba(128, 128, 128, 0.552);
+}
+
 .signup input:focus {
   outline: 1px solid #0071f3ad;
 }
 
 .signup button {
   width: 100%;
+  font-size: 1.2rem;
 }
 
 .google-btn {
   width: 100% !important;
-  /* margin-top: 0.5rem; */
+  font-size: 1.2rem !important;
 }
 
 .signup-container .section-title {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .github {
