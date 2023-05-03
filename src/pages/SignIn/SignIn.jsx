@@ -1,23 +1,70 @@
 import GoogleButton from "react-google-button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SignIn.css";
+import { useAuthContext } from "../../contexts/AuthProvider";
+import { useState } from "react";
+import { toast } from "react-toastify";
 const SignIn = () => {
- 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const { signIn } = useAuthContext();
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    signIn(email, password)
+      .then((userCredential) => {
+        const loggedUser = userCredential.user;
+
+        // *show toast
+        toast.success("Succesfully Logged In", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
+        // * reset state
+        setEmail("");
+        setPassword("");
+
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
 
   return (
     <section>
       <div className="signin-container">
         <h2>Sign In</h2>
-        <form className="signin">
+        <form onSubmit={handleSignIn} className="signin">
           <div className="control">
             <label htmlFor="email">Email: </label>
-            <input type="email" name="email" id="email" placeholder="Email" />
+            <input
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+            />
           </div>
           <div className="control">
             <label htmlFor="password">Password: </label>
             <input
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
               name="password"
               id="password"

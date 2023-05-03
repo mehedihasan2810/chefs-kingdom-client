@@ -1,8 +1,9 @@
 import GoogleButton from "react-google-button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./SignUp.css";
 import { useAuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -10,11 +11,40 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const data = useAuthContext();
-  console.log(data);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { signUp } = useAuthContext();
 
   const handleSignUp = (e) => {
     e.preventDefault();
+
+    signUp(email, password)
+      .then((userCredential) => {
+        const createdUser = userCredential.user;
+        console.log(createdUser);
+
+        // *show toast
+        toast.success("Succesfully Signed Up", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+
+        // * reset state
+        setEmail("");
+        setPassword("");
+
+        // *redirect user
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+      });
   };
 
   return (

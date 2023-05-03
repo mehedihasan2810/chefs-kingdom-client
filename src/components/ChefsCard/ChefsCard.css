@@ -55,6 +55,7 @@
   background: transparent;
   transition: all 0.3s;
   border-radius: 4px;
+  cursor: pointer;
 }
 .btn-primary:hover {
   background: #0070f3;

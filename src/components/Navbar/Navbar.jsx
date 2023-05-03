@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-toastify";
 import "./Navbar.css";
 const Navbar = () => {
+  const { currentUser, logOut } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        // *show toast
+        if (currentUser) {
+        toast.success("Succesfully Logged Out", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
+        navigate("/");
+        }
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
+
   return (
     <div className="center-container">
       <div className="nav-container">
@@ -11,14 +36,25 @@ const Navbar = () => {
         <nav>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/blog'>Blog</Link>
+              <Link to="/blog">Blog</Link>
             </li>
-            <li>
-              <Link>Profile</Link>
-            </li>
+            {currentUser ? (
+              <>
+                <li>
+                  <Link to="/">Profile</Link>
+                </li>
+                <li>
+                  <button onClick={handleSignOut}>SignOut</button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/signin">SignIn</Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
