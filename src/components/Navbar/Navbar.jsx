@@ -11,19 +11,19 @@ const Navbar = () => {
       .then(() => {
         // *show toast
         if (currentUser) {
-        toast.success("Succesfully Logged Out", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
-        });
+          toast.success("Succesfully Signed Out", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          });
 
-        navigate("/");
+          navigate("/");
         }
       })
       .catch((error) => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
+          autoClose: 2000,
         });
       });
   };
@@ -49,12 +49,16 @@ const Navbar = () => {
                   <Link to="/">Profile</Link>
                 </li>
                 <li>
-                  <button className="btn-primary" onClick={handleSignOut}>SignOut</button>
+                  <button className="btn-primary" onClick={handleSignOut}>
+                    Sign Out
+                  </button>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/signin">SignIn</Link>
+                <Link to="/signin">
+                  <button className="btn-primary">Sign In</button>
+                </Link>
               </li>
             )}
           </ul>

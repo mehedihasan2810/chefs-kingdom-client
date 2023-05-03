@@ -17,10 +17,12 @@
 }
 .nav-container li {
   color: rgb(44, 43, 43);
+  align-self: center;
 }
 
-.nav-container .btn-primary{
+.nav-container .btn-primary {
   margin: 0;
+  /* width: max-content; */
 }
 
 @media (max-width: 768px) {

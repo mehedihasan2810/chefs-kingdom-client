@@ -23,7 +23,7 @@ const SignIn = () => {
         // *show toast
         toast.success("Succesfully Signed In", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
+          autoClose: 2000,
         });
 
         // * reset state
@@ -37,7 +37,7 @@ const SignIn = () => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
+          autoClose: 2000,
         });
       });
   };
@@ -50,7 +50,7 @@ const SignIn = () => {
         // *show toast
         toast.success("Succesfully Signed In", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
+          autoClose: 2000,
         });
 
         // *redirect user
@@ -61,7 +61,7 @@ const SignIn = () => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 1500,
+          autoClose: 2000,
         });
       });
   };
