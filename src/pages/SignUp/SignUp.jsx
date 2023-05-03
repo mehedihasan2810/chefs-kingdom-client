@@ -14,7 +14,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signUp } = useAuthContext();
+  const { signUp, googleSignIn } = useAuthContext();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const SignUp = () => {
         // *show toast
         toast.success("Succesfully Signed Up", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000,
+          autoClose: 1500,
         });
 
         // * reset state
@@ -42,10 +42,36 @@ const SignUp = () => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000,
+          autoClose: 1500,
         });
       });
   };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((userCredential) => {
+        const loggedUser = userCredential.user;
+
+        // *show toast
+        toast.success("Succesfully Signed In", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+
+        // *redirect user
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+      });
+  };
+
+  const handleGitHubSignIn = () => {};
 
   return (
     <section>
@@ -123,8 +149,14 @@ const SignUp = () => {
           <div className="line"></div>
         </div>
         <div className="google-github">
-          <GoogleButton type="light" className="google-btn" />
-          <button className="github">Sign in with Github</button>
+          <GoogleButton
+            onClick={handleGoogleSignIn}
+            type="light"
+            className="google-btn"
+          />
+          <button onClick={handleGitHubSignIn} className="github">
+            Sign in with Github
+          </button>
         </div>
       </div>
     </section>

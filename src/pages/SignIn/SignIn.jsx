@@ -11,7 +11,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signIn } = useAuthContext();
+  const { signIn, googleSignIn } = useAuthContext();
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -21,8 +21,9 @@ const SignIn = () => {
         const loggedUser = userCredential.user;
 
         // *show toast
-        toast.success("Succesfully Logged In", {
+        toast.success("Succesfully Signed In", {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
         });
 
         // * reset state
@@ -36,9 +37,36 @@ const SignIn = () => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
         });
       });
   };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((userCredential) => {
+        const loggedUser = userCredential.user;
+
+        // *show toast
+        toast.success("Succesfully Signed In", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+
+        // *redirect user
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+      });
+  };
+
+  const handleGitHubSignIn = () => {};
 
   return (
     <section>
@@ -87,8 +115,14 @@ const SignIn = () => {
           <div className="line"></div>
         </div>
         <div className="google-github">
-          <GoogleButton type="light" className="google-btn" />
-          <button className="github">Sign in with Github</button>
+          <GoogleButton
+            onClick={handleGoogleSignIn}
+            type="light"
+            className="google-btn"
+          />
+          <button onClick={handleGitHubSignIn} className="github">
+            Sign in with Github
+          </button>
         </div>
       </div>
     </section>

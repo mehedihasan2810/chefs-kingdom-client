@@ -13,6 +13,7 @@ const Navbar = () => {
         if (currentUser) {
         toast.success("Succesfully Logged Out", {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
         });
 
         navigate("/");
@@ -22,6 +23,7 @@ const Navbar = () => {
         // *show toast
         toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
         });
       });
   };
