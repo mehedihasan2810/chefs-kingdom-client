@@ -5,25 +5,29 @@
   gap: 1rem;
   padding: 1.5rem 0;
 }
-h2 {
+.nav-container h2 {
   color: rgb(44, 43, 43);
 }
-span {
+.nav-container span {
   color: #0070f3;
 }
-ul {
+.nav-container ul {
   display: flex;
   gap: 3rem;
 }
-li {
+.nav-container li {
   color: rgb(44, 43, 43);
 }
 
+.nav-container .btn-primary{
+  margin: 0;
+}
+
 @media (max-width: 768px) {
-  h2 {
+  .nav-container h2 {
     font-size: 1.3rem;
   }
-  ul {
+  .nav-container ul {
     gap: 2rem;
   }
 }

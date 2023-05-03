@@ -49,7 +49,7 @@ const Navbar = () => {
                   <Link to="/">Profile</Link>
                 </li>
                 <li>
-                  <button onClick={handleSignOut}>SignOut</button>
+                  <button className="btn-primary" onClick={handleSignOut}>SignOut</button>
                 </li>
               </>
             ) : (
