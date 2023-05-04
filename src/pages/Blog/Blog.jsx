@@ -17,6 +17,9 @@ const Blog = () => {
           incidunt consectetur!
         </p>
       </div>
+
+      <div className="loader"></div>
+
     </div>
   );
 };

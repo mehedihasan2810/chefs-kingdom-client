@@ -1,10 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Navbar.css";
 const Navbar = () => {
   const { currentUser, logOut } = useAuthContext();
   const navigate = useNavigate();
+
+  console.log(currentUser);
 
   const handleSignOut = () => {
     logOut()
@@ -46,7 +49,18 @@ const Navbar = () => {
             {currentUser ? (
               <>
                 <li>
-                  <Link to="/">Profile</Link>
+                  {currentUser?.photoURL ? (
+                    <img
+                      title={currentUser?.displayName}
+                      className="profile-img"
+                      src={currentUser?.photoURL}
+                      alt="user"
+                    />
+                  ) : (
+                    <div title="No Name">
+                      <AccountCircleIcon style={{ width: 40, height: 40 }} />
+                    </div>
+                  )}
                 </li>
                 <li>
                   <button className="btn-primary" onClick={handleSignOut}>

@@ -7,15 +7,16 @@ import { toast } from "react-toastify";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignInLoading, setIsSignInLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signIn, googleSignIn } = useAuthContext();
+  const { signIn, googleSignIn, gitHubSignIn } = useAuthContext();
 
   const handleSignIn = (e) => {
     e.preventDefault();
-
+    setIsSignInLoading(true);
     signIn(email, password)
       .then((userCredential) => {
         const loggedUser = userCredential.user;
@@ -29,6 +30,7 @@ const SignIn = () => {
         // * reset state
         setEmail("");
         setPassword("");
+        setIsSignInLoading(false);
 
         const from = location.state?.from?.pathname || "/";
         navigate(from, { replace: true });
@@ -39,6 +41,7 @@ const SignIn = () => {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
+        setIsSignInLoading(false);
       });
   };
 
@@ -66,7 +69,27 @@ const SignIn = () => {
       });
   };
 
-  const handleGitHubSignIn = () => {};
+  const handleGitHubSignIn = () => {
+    gitHubSignIn()
+      .then((userCredential) => {
+        // *show toast
+        toast.success("Succesfully Signed In", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+
+        // *redirect user
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+      });
+  };
 
   return (
     <section>
@@ -100,7 +123,13 @@ const SignIn = () => {
             />
           </div>
           <button className="btn-primary" type="submit">
-            Sign In
+          {
+              isSignInLoading ? (
+                <div className="loader"></div>
+              ): (
+                "Sign In"
+              )
+            }
           </button>
         </form>
         <p className="account">

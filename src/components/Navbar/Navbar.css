@@ -25,6 +25,13 @@
   /* width: max-content; */
 }
 
+.nav-container .profile-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .nav-container h2 {
     font-size: 1.3rem;

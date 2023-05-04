@@ -10,19 +10,36 @@ const SignUp = () => {
   const [photoUrl, setPhotoUrl] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUpLoading, setIsSignUpLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signUp, googleSignIn } = useAuthContext();
+  const { signUp, googleSignIn, gitHubSignIn, updateUserProfile } =
+    useAuthContext();
 
   const handleSignUp = (e) => {
     e.preventDefault();
-
+    setIsSignUpLoading(true);
     signUp(email, password)
       .then((userCredential) => {
         const createdUser = userCredential.user;
         console.log(createdUser);
+
+        // * update user profile
+        updateUserProfile(createdUser, name, photoUrl)
+          .then(() => {
+            console.log("profile updated");
+          })
+          .catch((error) => {
+            // *show toast
+            toast.error(error.message, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 2000,
+            });
+
+            setIsSignUpLoading(false);
+          });
 
         // *show toast
         toast.success("Succesfully Signed Up", {
@@ -33,6 +50,7 @@ const SignUp = () => {
         // * reset state
         setEmail("");
         setPassword("");
+        setIsSignUpLoading(false);
 
         // *redirect user
         const from = location.state?.from?.pathname || "/";
@@ -44,6 +62,8 @@ const SignUp = () => {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
+
+        setIsSignUpLoading(false);
       });
   };
 
@@ -71,11 +91,34 @@ const SignUp = () => {
       });
   };
 
-  const handleGitHubSignIn = () => {};
+  const handleGitHubSignIn = () => {
+    gitHubSignIn()
+      .then((userCredential) => {
+        // *show toast
+        toast.success("Succesfully Signed In", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+
+        // *redirect user
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        // *show toast
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+      });
+  };
 
   return (
+
+
     <section>
       <div className="signup-container">
+      
         <h2>Sign Up</h2>
         <form onSubmit={handleSignUp} className="signup">
           <div className="control">
@@ -103,6 +146,7 @@ const SignUp = () => {
               name="url"
               id="url"
               placeholder="Photo Url"
+              required
             />
           </div>
           <div className="control">
@@ -134,7 +178,13 @@ const SignUp = () => {
             />
           </div>
           <button className="btn-primary" type="submit">
-            Sign Up
+            {
+              isSignUpLoading ? (
+                <div className="loader"></div>
+              ): (
+                "Sign Up"
+              )
+            }
           </button>
         </form>
         <p className="account">

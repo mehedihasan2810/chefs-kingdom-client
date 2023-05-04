@@ -1,86 +1,92 @@
 .signin-container {
-    width: 500px;
-    box-shadow: 0 0 1px 1px #0071f32e;
-    margin: 80px auto;
-    padding: 1.5rem;
-    border-radius: 4px;
-  }
-  
-  .signin-container h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem;
-  }
-  
-  .signin > * + * {
-    margin-top: 2rem;
-  }
-  
-  .signin .control {
-    display: flex;
-    align-items: center;
-  }
-  
-  .signin label {
-    font-size: 1.3rem;
-    color: gray;
-    color: #0071f3ad;
-    margin-right: 0.6rem;
-  }
-  
-  .signin input {
-    padding: 0.7rem 1rem;
-    font-size: 1.1rem;
-    border: 1px solid #0071f32e;
-    border-radius: 4px;
-    flex-grow: 1;
-    color: gray;
-  }
-  
-  .signin input:focus {
-    outline: 1px solid #0071f3ad;
-  }
+  width: 500px;
+  box-shadow: 0 0 1px 1px #0071f32e;
+  margin: 80px auto;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
 
-  .signin input::placeholder{
-    color: rgba(128, 128, 128, 0.552);
-  }
-  
-  .signin button {
-    width: 100%;
-    font-size: 1.2rem;
-  }
+.signin-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
 
-  .account{
-    color: gray;
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 15px;
-  }
+.signin > * + * {
+  margin-top: 2rem;
+}
 
-  .account .acc{
-    color: #0071f3ad;
-  }
-  
-  .google-btn {
-    width: 100% !important;
-    font-size: 1.2rem !important;
-  }
-  
-  .signin-container .section-title {
-    margin: 1.5rem 0;
-  }
-  
-  .github {
-    font-size: 1.2rem;
-    padding: 1rem;
-    width: 100%;
-    background: #25292e;
-    color: #ffffff;
-    margin-top: 1rem;
-    border: none;
-    transition: all 0.2s;
-  }
-  .github:hover {
-    box-shadow: 0 0 5px #25292e;
-  }
-  
+.signin .control {
+  display: flex;
+  align-items: center;
+}
+
+.signin label {
+  font-size: 1.3rem;
+  color: gray;
+  color: #0071f3ad;
+  margin-right: 0.6rem;
+}
+
+.signin input {
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  border: 1px solid #0071f32e;
+  border-radius: 4px;
+  flex-grow: 1;
+  color: gray;
+}
+
+.signin input:focus {
+  outline: 1px solid #0071f3ad;
+}
+
+.signin input::placeholder {
+  color: rgba(128, 128, 128, 0.552);
+}
+
+.signin button {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.account {
+  color: gray;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 15px;
+}
+
+.account .acc {
+  color: #0071f3ad;
+}
+
+.google-btn {
+  width: 100% !important;
+  font-size: 1.2rem !important;
+}
+
+.signin-container .section-title {
+  margin: 1.5rem 0;
+}
+
+.github {
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+  background: #25292e;
+  color: #ffffff;
+  margin-top: 1rem;
+  border: none;
+  transition: all 0.2s;
+}
+.github:hover {
+  box-shadow: 0 0 5px #25292e;
+}
+
+.signin-container .loader {
+  width: 30px;
+  height: 30px;
+  border-width: 5px;
+  margin: 0 auto;
+}
