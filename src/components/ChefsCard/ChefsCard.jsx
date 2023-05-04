@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 import "./ChefsCard.css";
 import StarIcon from "@mui/icons-material/Star";
+import LazyLoad from "react-lazy-load";
 
 const ChefsCard = ({ id, name, img, experience, likes, recipes }) => {
   return (
     <div className="card-container">
       <div className="img-container">
-        <img
-          className="chefsCard-img"
-          width={180}
-          height={180}
-          src={img}
-          alt=""
-        />
+        <LazyLoad>
+          <img
+            className="chefsCard-img"
+            width={180}
+            height={180}
+            src={img}
+            alt=""
+          />
+        </LazyLoad>
         <div className="bg-img"></div>
         <div className="star">
           <StarIcon sx={{ fontSize: 50 }} />
