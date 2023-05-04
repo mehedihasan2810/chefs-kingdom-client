@@ -42,7 +42,11 @@ const Cuisines = () => {
   }, []);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="cuisine-loader">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   return (
