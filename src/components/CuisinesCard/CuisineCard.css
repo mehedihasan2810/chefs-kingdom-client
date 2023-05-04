@@ -61,3 +61,7 @@
     border: none;
     cursor: pointer;
 }
+
+.cuisineCard .disabled{
+    color: rgba(255, 0, 0, 0.238);
+}

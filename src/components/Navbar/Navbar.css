@@ -25,11 +25,19 @@
   /* width: max-content; */
 }
 
-.nav-container .profile-img{
+.nav-container .profile-img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.nav-container .active {
+  color: #0070f3;
+}
+
+.nav-container .pending {
+  opacity: 0.5;
 }
 
 @media (max-width: 768px) {

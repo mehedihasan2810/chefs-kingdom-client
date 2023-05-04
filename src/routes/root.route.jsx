@@ -5,11 +5,14 @@ import Cuisines from "../pages/Cuisines/Cuisines";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import Blog from "../pages/Blog/Blog";
+import PrivateRoute from "./private.route";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -18,7 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/chefs/:id",
-        element: <Cuisines />,
+        element: (
+          <PrivateRoute>
+            <Cuisines />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://chefs-kingdom-server.vercel.app/chefs/${params.id}`),
       },
@@ -34,7 +41,6 @@ export const router = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
       },
-
     ],
   },
 ]);

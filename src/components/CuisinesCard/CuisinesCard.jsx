@@ -1,8 +1,22 @@
 import "./CuisineCard.css";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleFavorites = () => {
+    // *show toast
+    toast.success("Succesfully added to favorites", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2000,
+    });
+
+    setIsDisabled(true);
+  };
+
   return (
     <div className="center-container">
       <div className="cuisineCard">
@@ -10,8 +24,17 @@ const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
         <div className="cuisineCard-body">
           <div className="heading">
             <h4>{recipeName}</h4>
-            <button>
-              <FavoriteIcon sx={{ color: "red", fontSize: 30 }} />
+            <button
+              className="disabled"
+              disabled={isDisabled}
+              onClick={handleFavorites}
+            >
+              <FavoriteIcon
+                sx={{
+                  color: isDisabled ? "rgba(255, 0, 0, 0.238)" : "red",
+                  fontSize: 30,
+                }}
+              />
             </button>
           </div>
           <p className="rating">

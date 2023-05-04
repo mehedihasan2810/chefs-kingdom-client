@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -41,10 +41,24 @@ const Navbar = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <NavLink
+                to="/blog"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                Blog
+              </NavLink>
             </li>
             {currentUser ? (
               <>
