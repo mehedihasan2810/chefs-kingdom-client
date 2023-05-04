@@ -7,7 +7,9 @@ const PrivateRoute = ({ children }) => {
   const { currentUser, isAuthLoading } = useAuthContext();
 
   if (isAuthLoading) {
-    return <h1>Loading...</h1>;
+    return <div className="loader" style={{
+      margin: "200px auto"
+    }}></div>;
   }
 
   if (currentUser) {

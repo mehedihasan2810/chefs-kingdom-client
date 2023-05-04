@@ -5,70 +5,56 @@ const FeaturedCuisines = () => {
   const data = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/1972115/pexels-photo-1972115.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      img2: "https://images.pexels.com/photos/1163194/pexels-photo-1163194.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      title: "Long Sleeve Graphic T-shirt",
-      isNew: true,
-      oldPrice: 19,
-      price: 12,
+      img: "https://images.unsplash.com/photo-1516684732162-798a0062be99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      img2: "https://images.unsplash.com/photo-1577110058859-74547db40bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+      name: "rice",
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/1759622/pexels-photo-1759622.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      title: "Coat",
-      isNew: true,
-      oldPrice: 19,
-      price: 12,
+      img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      name: "Kabab",
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/1457983/pexels-photo-1457983.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      title: "Skirt",
-      oldPrice: 19,
-      price: 12,
+      img: "https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      name: "Pasta",
     },
     {
       id: 4,
-      img: "https://images.pexels.com/photos/2065200/pexels-photo-2065200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      title: "Hat",
-      oldPrice: 19,
-      price: 12,
+      img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=781&q=80",
+      name: "Pizza",
     },
   ];
 
   return (
     <div className="center-container">
-    <div className="featuredProducts">
-      <div className="top">
-        <h1> products</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-          molestiae tempora ad, enim assumenda consequatur harum tempore odio
-          nulla omnis nostrum ratione nemo quisquam voluptatum vitae cupiditate.
-          Voluptatum, dicta quis.
-        </p>
+      <div className="featuredProducts">
+        <div className="top">
+          <h1>Featured Cuisines</h1>
+          <p>
+            This is some featured cuisines. which from best chefs in the world
+            like gordon ramsy. u can buy some of them if u like actually we r
+            here to sell so u should buy
+          </p>
+        </div>
+        <div className="bottom">
+          {data.map((item) => {
+            return (
+              <Link key={item.id} className="link" to="/">
+                <div className="card">
+                  <div className="image">
+                    <img src={item.img} alt="" className="mainImage" />
+                    {item.img2 && (
+                      <img src={item.img2} alt="" className="secondImage" />
+                    )}
+                  </div>
+                  <h2>{item.name}</h2>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
-      <div className="bottom">
-        {data.map((item) => {
-          return (
-            <Link key={item.id} className="link" to='/'>
-            <div className="card">
-              <div className="image">
-                {item.isNew && <span>New Season</span>}
-                <img src={item.img} alt="" className="mainImage" />
-                <img src={item.img2} alt="" className="secondImage" />
-              </div>
-              <h2>{item.title}</h2>
-              <div className="prices">
-                <h3>${item.oldPrice}</h3> 
-                <h3>${item.price}</h3> 
-                </div>  
-            </div>
-          </Link>
-          )
-        })}
-      </div>
-    </div>
     </div>
   );
 };

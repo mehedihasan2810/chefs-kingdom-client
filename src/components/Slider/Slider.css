@@ -1,5 +1,5 @@
 .slider {
-  height: calc(100vh - 80px);
+  height: calc(95vh - 80px);
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -31,8 +31,8 @@ img {
 .icon {
   width: 50px;
   height: 50px;
-  border: 1px solid #0070f3;
-  color: #0070f3;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +50,11 @@ img {
     height: auto;
   }
   .icons {
-    bottom: 50px;
+    bottom: 200px;
+  }
+}
+@media (max-width: 425px) {
+  .icons {
+    bottom: 100px;
   }
 }

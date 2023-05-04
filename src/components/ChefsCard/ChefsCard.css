@@ -1,5 +1,5 @@
 .card-container {
-  width: 300px;
+  width: 340px;
   /* border: 1px solid #0071f36d; */
   border-radius: 4px;
   padding: 1rem;
@@ -13,6 +13,7 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .card-container .bg-img {
@@ -60,4 +61,15 @@
 .btn-primary:hover {
   background: #0070f3;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    width: 340px;
+  }
+}
+@media (max-width: 375px) {
+  .card-container {
+    width: 290px;
+  }
 }

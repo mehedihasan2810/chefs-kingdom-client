@@ -1,6 +1,6 @@
 import Pdf from "react-to-pdf";
-import "./Blog.css";
 import { useRef } from "react";
+import "./Blog.css";
 
 const Blog = () => {
   const ref = useRef();
