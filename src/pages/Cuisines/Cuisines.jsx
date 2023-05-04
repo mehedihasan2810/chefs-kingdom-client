@@ -29,7 +29,6 @@ const Cuisines = () => {
         setChef(singleChef);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
         setIsLoading(false);
       }
     };

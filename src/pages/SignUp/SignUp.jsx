@@ -24,13 +24,10 @@ const SignUp = () => {
     signUp(email, password)
       .then((userCredential) => {
         const createdUser = userCredential.user;
-        console.log(createdUser);
 
         // * update user profile
         updateUserProfile(createdUser, name, photoUrl)
-          .then(() => {
-            console.log("profile updated");
-          })
+          .then(() => {})
           .catch((error) => {
             // *show toast
             toast.error(error.message, {
@@ -114,11 +111,8 @@ const SignUp = () => {
   };
 
   return (
-
-
     <section>
       <div className="signup-container">
-      
         <h2>Sign Up</h2>
         <form onSubmit={handleSignUp} className="signup">
           <div className="control">
@@ -178,13 +172,7 @@ const SignUp = () => {
             />
           </div>
           <button className="btn-primary" type="submit">
-            {
-              isSignUpLoading ? (
-                <div className="loader"></div>
-              ): (
-                "Sign Up"
-              )
-            }
+            {isSignUpLoading ? <div className="loader"></div> : "Sign Up"}
           </button>
         </form>
         <p className="account">

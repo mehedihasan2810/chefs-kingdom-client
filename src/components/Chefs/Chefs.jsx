@@ -3,7 +3,6 @@ import ChefsCard from "../ChefsCard/ChefsCard";
 import "./Chefs.css";
 const Chefs = () => {
   const data = useLoaderData();
-  console.log(data);
   return (
     <div className="center-container">
       <section className="chefs-container">
