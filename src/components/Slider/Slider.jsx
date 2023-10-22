@@ -1,43 +1,53 @@
-import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef } from "react";
+import Navbar from "../Navbar/Navbar";
+import { heroSliderData } from "./data";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "./Slider.css";
-import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
-import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 
 const Slider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const data = [
-    "https://images.unsplash.com/photo-1616486447077-f8d3f7bae6b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1630409346824-4f0e7b080087?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1546&q=80",
-    "https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80",
-  ];
-
-  const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    progressCircle.current.style.setProperty("--progress", 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
   return (
-    <div className="slider">
-      <div
-        className="container"
-        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+    <div className="header-slider">
+      <Navbar />
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        className="mySwiper"
       >
-        <img src={data[0]} alt="" />
-        <img src={data[1]} alt="" />
-        <img src={data[2]} alt="" />
-      </div>
-      <div className="icons">
-        <div className="icon" onClick={prevSlide}>
-          <WestOutlinedIcon />
+        {heroSliderData.map((item, index) => (
+          <SwiperSlide key={index} className="swiper-slide">
+            <img src={item.path} alt={item.altText} />
+          </SwiperSlide>
+        ))}
+
+        <div className="autoplay-progress" slot="container-end">
+          <svg viewBox="0 0 48 48" ref={progressCircle}>
+            <circle cx="24" cy="24" r="20"></circle>
+          </svg>
+          <span ref={progressContent}></span>
         </div>
-        <div className="icon" onClick={nextSlide}>
-          <EastOutlinedIcon />
-        </div>
-      </div>
+      </Swiper>
     </div>
   );
 };

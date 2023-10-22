@@ -47,22 +47,6 @@
   margin-bottom: 5px;
 }
 
-.btn-primary {
-  font: inherit;
-  padding: 0.7rem 1rem;
-  margin-top: 1rem;
-  border: 1px solid #0070f3;
-  color: #0070f3;
-  background: transparent;
-  transition: all 0.3s;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.btn-primary:hover {
-  background: #0070f3;
-  color: #ffffff;
-}
-
 @media (max-width: 768px) {
   .card-container {
     width: 340px;
