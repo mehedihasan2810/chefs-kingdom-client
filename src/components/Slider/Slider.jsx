@@ -18,7 +18,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="header-slider">
+    <div className="hero-slider">
       <Navbar />
       <Swiper
         spaceBetween={30}

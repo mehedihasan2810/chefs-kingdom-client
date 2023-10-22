@@ -1,23 +1,23 @@
-.nav-container {
+/* .nav-container {
   position: absolute;
   top: 0;
-  height: 0;
+  left: 0;
   z-index: 2;
-}
+} */
 
 /* --------------
       TOPBAR
   -------------- */
 .topbar {
-  display: block;
-  width: 100%;
-  padding-block: 10px;
-  z-index: 4;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* display: block; */
+  /* width: 100%; */
+  /* padding-block: 10px; */
+  /* z-index: 4; */
+  /* color: #fff; */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
 }
 
-.topbar span {
+/* .topbar span {
   color: var(--base-gray-300);
 }
 
@@ -38,13 +38,13 @@
 
 .topbar-item ion-icon {
   --ionicon-stroke-width: 60px;
-}
+} */
 
 /* --------------
     NAV HEADER
   -------------- */
 
-.nav-header {
+/* .nav-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,29 +52,29 @@
   padding: 1rem 4rem;
   gap: 1rem;
   color: #fff;
-}
+} */
 
 .nav-header h2 {
   /* color: #10b981; */
-  background-image: url("https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  /* background-image: url("https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-size: cover;
   background-position: center;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: transparent; */
 }
-.nav-header ul {
+/* .nav-header ul {
   display: flex;
   gap: 3rem;
-}
-.nav-header li {
+} */
+/* .nav-header li {
   align-self: center;
   text-transform: uppercase;
-}
+} */
 
-.nav-header .btn-primary {
+/* .nav-header .btn-primary {
   margin: 0;
-}
+} */
 
 .nav-header .profile-img {
   width: 40px;
@@ -83,16 +83,16 @@
   object-fit: cover;
 }
 
-.nav-header .active {
+/* .nav-header .active {
   color: var(--primary-emerald-300);
   border-block-end: 2px solid var(--primary-emerald-300);
 }
 
 .nav-header .pending {
   opacity: 0.5;
-}
+} */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .nav-header h2 {
     font-size: 1.2rem;
   }
@@ -120,4 +120,4 @@
     font-size: 0.8rem;
     padding: 0.5rem 0.6rem;
   }
-}
+} */

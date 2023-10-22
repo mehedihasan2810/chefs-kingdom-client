@@ -1,10 +1,24 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import {
+  Link as ChakraLink,
+  Flex,
+  Heading,
+  Image,
+  Box,
+  Button,
+  List,
+  ListItem,
+  // useColorMode,
+  // Spacer,
+} from "@chakra-ui/react";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Navbar.css";
-import { Button } from "@chakra-ui/react";
+import { navbarData } from "./data";
+
 const Navbar = () => {
+  // const { colorMode, toggleColorMode } = useColorMode();
   const { currentUser, logOut } = useAuthContext();
   const navigate = useNavigate();
 
@@ -31,125 +45,125 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav-container">
-      <div className="topbar">
-        <div className="container">
-          <address className="topbar-item">
-            <div className="icon">
-              <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-            </div>
+    <Box w="100vw" position="absolute" top="0" left="0" zIndex="2">
+      <Box
+        py="10px"
+        mb="16px"
+        borderBlockEnd="1px solid rgba(255, 255, 255, 0.1)"
+      >
+        <Flex justifyContent="center" gap="60px" color="gray.400">
+          <Box as="address">
+            <Box as="span">St, Delicious City, London 9578, UK</Box>
+          </Box>
 
-            <span className="span">
-              St, Delicious City, London 9578, UK
-            </span>
-          </address>
+          <Box>
+            <Box as="span">Daily : 8.00 am to 10.00 pm</Box>
+          </Box>
 
-          <div className="separator"></div>
+          <ChakraLink as={NavLink} href="tel:+11234567890">
+            <Box as="span">+1 123 456 7890</Box>
+          </ChakraLink>
 
-          <div className="topbar-item item-2">
-            <div className="icon">
-              <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-            </div>
-
-            <span className="span">Daily : 8.00 am to 10.00 pm</span>
-          </div>
-
-          <a href="tel:+11234567890" className="topbar-item link">
-            <div className="icon">
-              <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
-            </div>
-
-            <span className="span">+1 123 456 7890</span>
-          </a>
-
-          <div className="separator"></div>
-
-          <a href="mailto:booking@restaurant.com" className="topbar-item link">
-            <div className="icon">
+          <ChakraLink as={NavLink} href="mailto:booking@restaurant.com">
+            <Box>
               <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-            </div>
+            </Box>
 
-            <span className="span">buyrecipe@gmail.com</span>
-          </a>
-        </div>
-      </div>
-      <div className="nav-header">
-        <h2>Chef&#39;s Kingdom</h2>
-        <nav>
-          <ul>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                }
-              >
-                Contact Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                }
-              >
-                Our Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                }
-              >
-                Our Shop
-              </NavLink>
-            </li>
+            <Box as="span">buyrecipe@gmail.com</Box>
+          </ChakraLink>
+        </Flex>
+      </Box>
+      <Flex
+        maxW="1800px"
+        mx="auto"
+        px="8px"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Heading
+          as="h2"
+          bgImg="https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          bgSize="cover"
+          bgPos="center"
+          bgClip="text"
+        >
+          Chef&#39;s Kingdom
+        </Heading>
+        <Box as="nav">
+          <List display="flex" gap="40px">
+            {navbarData.map(({ id, path, text }) => (
+              <ListItem key={id} alignSelf="center" textTransform="uppercase">
+                <ChakraLink
+                  as={NavLink}
+                  to={path}
+                  color="gray.100"
+                  fontSize="1.05rem"
+                  _hover={{
+                    color: "#4FD1C5",
+                    textDecor: "none",
+                  }}
+                  style={({ isActive }) => {
+                    if (!(path === "#")) {
+                      return {
+                        fontWeight: isActive ? "bold" : "",
+                        borderBlockEnd: isActive ? "2px solid" : "",
+                        color: isActive ? "#4FD1C5" : "gray.100",
+                      };
+                    }
+                  }}
+                >
+                  {text}
+                </ChakraLink>
+              </ListItem>
+            ))}
+
             {currentUser ? (
               <>
-                <li>
+                <ListItem>
                   {currentUser?.photoURL ? (
-                    <img
+                    <Image
                       title={currentUser?.displayName}
-                      className="profile-img"
                       src={currentUser?.photoURL}
                       alt="user"
                     />
                   ) : (
-                    <div title="No Name">
+                    <Box title="No Name">
                       <AccountCircleIcon style={{ width: 40, height: 40 }} />
-                    </div>
+                    </Box>
                   )}
-                </li>
-                <li>
-                  <Button colorScheme="green" onClick={handleSignOut}>
+                </ListItem>
+                <ListItem>
+                  <Button
+                    colorScheme="green"
+                    bgGradient="linear(to-r, teal.500, green.500)"
+                    _hover={{
+                      bgGradient: "linear(to-r, red.500, yellow.500)",
+                    }}
+                    onClick={handleSignOut}
+                  >
                     Sign Out
                   </Button>
-                </li>
+                </ListItem>
               </>
             ) : (
-              <li>
-                <Link to="/signin">
-                  <Button colorScheme="green">Sign In</Button>
-                </Link>
-              </li>
+              <ListItem>
+                <ChakraLink as={NavLink} to="/signin">
+                  <Button
+                    colorScheme="teal"
+                    bgGradient="linear(to-r, teal.500, green.500)"
+                    _hover={{
+                      bgGradient: "linear(to-r, red.500, yellow.500)",
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </ChakraLink>
+              </ListItem>
             )}
-          </ul>
-        </nav>
-      </div>
-    </div>
+          </List>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 

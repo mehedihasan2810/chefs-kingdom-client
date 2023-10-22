@@ -1,18 +1,15 @@
-.header-slider {
+.hero-slider {
   position: relative;
+  isolation: isolate;
 }
 
 .mySwiper {
   width: 100vw;
-  height: 100vh;
-  margin-inline: auto;
-}
-
-.swiper-slide {
+  height: auto;
 }
 
 .swiper-slide img {
-  object-fit: cover;
+  /* object-fit: cover; */
   filter: brightness(0.8);
 }
 
