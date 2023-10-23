@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
 import "./FeaturedCuisines.css";
+import {
+  Badge,
+  Box,
+  Center,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 
 const FeaturedCuisines = () => {
   const data = [
@@ -27,35 +36,53 @@ const FeaturedCuisines = () => {
   ];
 
   return (
-    <div className="center-container">
-      <div className="featuredProducts">
-        <div className="top">
-          <h1>Featured Cuisines</h1>
-          <p>
-            This is some featured cuisines. which from best chefs in the world
-            like gordon ramsy. u can buy some of them if u like actually we r
-            here to sell so u should buy
-          </p>
-        </div>
-        <div className="bottom">
+    <Box
+      as="section"
+      py={["60px", null, "80px", "120px"]}
+      px="8px"
+      bgGradient="linear(to-b,#FFF2D8, transparent)"
+    >
+      <Box maxW="1400px" mx="auto" className="featuredProducts">
+        <Center mb="40px">
+          <Box>
+            <Heading
+              as="h2"
+              textAlign="center"
+              color="gray.700"
+              fontSize={["2rem", null, "2.3rem"]}
+            >
+              Featured Cuisines
+            </Heading>
+            <Text textAlign="center" maxW="60ch" mt="10px" color="gray.600">
+              Featuring Our top selling and top rated recipe this month
+            </Text>
+          </Box>
+        </Center>
+
+        <SimpleGrid
+          w="fit-content"
+          mx="auto"
+          columns={[1, null, 2, 3, 4]}
+          spacing="50px"
+        >
           {data.map((item) => {
             return (
               <Link key={item.id} className="link" to="/">
-                <div className="card">
-                  <div className="image">
-                    <img src={item.img} alt="" className="mainImage" />
-                    {item.img2 && (
-                      <img src={item.img2} alt="" className="secondImage" />
-                    )}
-                  </div>
-                  <h2>{item.name}</h2>
-                </div>
+                <Box>
+                  <Box pos="relative" isolation="isolate" role="group">
+                    <Image src={item.img} alt="" w="280px" h="400px" />
+                    <Badge colorScheme="green" pos="absolute" top="0" right="0">
+                      $22
+                    </Badge>
+                  </Box>
+                  <Box>{item.name}</Box>
+                </Box>
               </Link>
             );
           })}
-        </div>
-      </div>
-    </div>
+        </SimpleGrid>
+      </Box>
+    </Box>
   );
 };
 
