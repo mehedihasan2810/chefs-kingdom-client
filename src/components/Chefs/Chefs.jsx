@@ -6,24 +6,18 @@ const Chefs = () => {
   return (
     <Box
       as="section"
-      py="150px"
-      position="relative"
-      isolation="isolate"
-      overflowY="hidden visible"
-      _before={{
-        content: '""',
-        position: "absolute",
-        top: "0",
-        left: "0",
-        zIndex: "-1",
-        w: "100%",
-        h: "100%",
-        bgGradient: "linear(to-b,#FFF2D8, transparent)",
-      }}
+      py={["60px", null, "80px", "120px"]}
+      px="8px"
+      bgGradient="linear(to-b,#FFF2D8, transparent)"
     >
       <Center mb="40px">
         <Box>
-          <Heading as="h2" color="gray.700" fontSize="2.3rem">
+          <Heading
+            as="h2"
+            color="gray.700"
+            textAlign="center"
+            fontSize={["2rem", null, "2.3rem"]}
+          >
             Top Rated Master Chefs
           </Heading>
           <Text textAlign="center" mt="10px" color="gray.600">
