@@ -1,0 +1,28 @@
+export const containerStyles = {
+  _before: {
+    content: '""',
+    position: "absolute",
+    zIndex: "-1",
+    transform: "rotate(-30deg)",
+    w: "100px",
+    h: "100%",
+    bg: "cyan.500",
+    filter: "auto",
+    blur: "40px",
+    opacity: "0.6",
+  },
+  _after: {
+    content: '""',
+    position: "absolute",
+    top: "0",
+    right: "0",
+    zIndex: "-1",
+    transform: "rotate(-30deg)",
+    w: "100px",
+    h: "100%",
+    bg: "green.500",
+    filter: "auto",
+    blur: "40px",
+    opacity: "0.6",
+  },
+};

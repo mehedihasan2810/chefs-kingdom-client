@@ -12,10 +12,9 @@ import {
   Circle,
   useDisclosure,
   Avatar,
+  useToast,
 } from "@chakra-ui/react";
 import { useAuthContext } from "../../contexts/AuthProvider";
-import { toast } from "react-toastify";
-import "./Navbar.css";
 import { navbarData } from "./data";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import DrawerNavbar from "./DrawerNavbar";
@@ -25,15 +24,23 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const handleSignOut = () => {
     logOut()
       .then(() => {
         // *show toast
         if (currentUser) {
-          toast.success("Succesfully Signed Out", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 2000,
+          // toast.success("Succesfully Signed Out", {
+          //   position: toast.POSITION.TOP_CENTER,
+          //   autoClose: 2000,
+          // });
+
+          toast({
+            title: "Succesfully Signed Out",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
           });
 
           navigate("/");
@@ -41,9 +48,15 @@ const Navbar = () => {
       })
       .catch((error) => {
         // *show toast
-        toast.error(error.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000,
+        // toast.error(error.message, {
+        //   position: toast.POSITION.TOP_CENTER,
+        //   autoClose: 2000,
+        // });
+        toast({
+          title: error.message,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
         });
       });
   };

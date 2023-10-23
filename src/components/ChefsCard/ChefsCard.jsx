@@ -1,37 +1,70 @@
-import { Link } from "react-router-dom";
-import "./ChefsCard.css";
-import StarIcon from "@mui/icons-material/Star";
-import LazyLoad from "react-lazy-load";
+/* eslint-disable react/prop-types */
+import { Link as ReactRouterLink } from "react-router-dom";
 
-const ChefsCard = ({ id, name, img, experience, likes, recipes }) => {
+import {
+  Box,
+  Button,
+  Heading,
+  Image,
+  Text,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
+import { containerStyles } from "./styles";
+
+const ChefsCard = ({ id, name, img, experience }) => {
   return (
-    <div className="card-container">
-      <div className="img-container">
-        <LazyLoad>
-          <img
-            className="chefsCard-img"
-            width={180}
-            height={180}
-            src={img}
-            alt=""
-          />
-        </LazyLoad>
-        <div className="bg-img"></div>
-        <div className="star">
-          <StarIcon sx={{ fontSize: 50 }} />
-        </div>
-      </div>
+    <Box
+      boxShadow="xs"
+      bg="#030712"
+      rounded="md"
+      w="300px"
+      px="14px"
+      py="16px"
+      position="relative"
+      isolation="isolate"
+      overflow="hidden"
+      _before={containerStyles._before}
+      _after={containerStyles._after}
+    >
+      <Box>
+        <Image
+          w={110}
+          h={110}
+          mx="auto"
+          objectFit="cover"
+          borderRadius="50%"
+          src={img}
+          alt="chef image"
+        />
+      </Box>
 
-      <div className="card-body">
-        <h4>{name}</h4>
-        <p>{experience} years of experience</p>
-        <p>{recipes} recipes</p>
-        <p>{likes} Likes</p>
-        <Link to={`/chefs/${id}`}>
-          <button className="btn-primary">View Recipes</button>
-        </Link>
-      </div>
-    </div>
+      <Box textAlign="center" mt="10px">
+        <Heading as="h6" color="gray.200" fontSize="1.6rem" fontWeight="500">
+          {name}
+        </Heading>
+        <Text color="gray.300">New York</Text>
+        <Text color="gray.300">{experience} years of experience</Text>
+
+        <ChakraLink
+          w="100%"
+          display="inline-block"
+          mt="16px"
+          as={ReactRouterLink}
+          to={`/chefs/${id}`}
+        >
+          <Button
+            w="100%"
+            colorScheme="teal"
+            bgGradient="linear(to-r, teal.500, green.500)"
+            _hover={{
+              bgGradient: "linear(to-r, red.500, yellow.500)",
+            }}
+          >
+            View My Recipes
+          </Button>
+        </ChakraLink>
+      </Box>
+    </Box>
   );
 };
 
