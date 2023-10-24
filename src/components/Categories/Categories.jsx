@@ -58,7 +58,8 @@ const Categories = () => {
               h="100%"
               objectFit="cover"
               src={item.img}
-              alt={item.btnText}
+              alt={item.btnText} 
+              loading="lazy"
             />
             <AbsoluteCenter>
               <Link to={item.path}>

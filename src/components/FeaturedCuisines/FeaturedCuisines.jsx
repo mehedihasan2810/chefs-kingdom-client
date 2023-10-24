@@ -69,7 +69,13 @@ const FeaturedCuisines = () => {
               <Link key={item.id} className="link" to="/">
                 <Box>
                   <Box pos="relative" isolation="isolate" role="group">
-                    <Image src={item.img} alt="" w="280px" h="400px" />
+                    <Image
+                      src={item.img}
+                      alt=""
+                      w="280px"
+                      h="400px"
+                      loading="lazy"
+                    />
                     <Badge colorScheme="green" pos="absolute" top="0" right="0">
                       $22
                     </Badge>

@@ -46,6 +46,7 @@ const ChefsCard = ({ id, name, img, experience, index }) => {
           borderRadius="50%"
           src={img}
           alt="chef image"
+          loading="lazy"
         />
       </Box>
 

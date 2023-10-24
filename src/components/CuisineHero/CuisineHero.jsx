@@ -25,7 +25,8 @@ const CuisineHero = ({ chef }) => {
           rounded="full"
           border="7px solid teal"
           src={chef?.img}
-          alt=""
+          alt="Chef image"
+          loading="lazy"
         />
       </Box>
     </Box>
