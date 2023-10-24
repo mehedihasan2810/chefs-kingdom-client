@@ -1,57 +1,81 @@
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="center-container">
-      <div className="footer">
-        <div className="top">
-          <div className="item">
-            <h1>Categories</h1>
-            <span>Biriani</span>
-            <span>Spicy</span>
-            <span>Drinks</span>
-            <span>best rated</span>
-            <span>chefs</span>
-          </div>
-          <div className="item">
-            <h1>Links</h1>
-            <span>FAQ</span>
-            <span>Pages</span>
-            <span>Stories</span>
-            <span>Compare</span>
-            <span>Cookies</span>
-          </div>
-          <div className="item">
-            <h1>About</h1>
-            <span>
+    <Box as="footer" bgGradient="linear(to-b,#FFF2D8, transparent)">
+      <Box
+        maxW="1400px"
+        mx="auto"
+        py={["60px", null, "80px", "120px"]}
+        px="8px"
+        className="footer"
+      >
+        <SimpleGrid
+          templateColumns={["repeat(2, 1fr)", null, null, "repeat(4, 1fr)"]}
+          spacing="50px"
+          className="top"
+        >
+          <Box className="item">
+            <Box as="strong" fontSize={18}>
+              {" "}
+              Categories
+            </Box>
+            <Box>Biriani</Box>
+            <Box>Spicy</Box>
+            <Box>Drinks</Box>
+            <Box>best rated</Box>
+            <Box>chefs</Box>
+          </Box>
+          <Box className="item">
+            <Box as="strong" fontSize={18}>
+              Links
+            </Box>
+            <Box>FAQ</Box>
+            <Box>Pages</Box>
+            <Box>Stories</Box>
+            <Box>Compare</Box>
+            <Box>Cookies</Box>
+          </Box>
+          <Box className="item">
+            <Box as="strong" fontSize={18}>
+              About
+            </Box>
+            <Box>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde enim
               eos vitae blanditiis neque molestias itaque sequi, voluptatem
               voluptatum, error placeat magni? Rerum mollitia dignissimos quo
               magnam culpa quasi maiores.
-            </span>
-          </div>
-          <div className="item">
-            <h1>Contact</h1>
-            <span>
+            </Box>
+          </Box>
+          <Box className="item">
+            <Box as="strong" fontSize={18}>
+              Contact
+            </Box>
+            <Box>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
               minus dolore tempora beatae modi sequi eligendi delectus, ea sed
               voluptate itaque similique quos doloremque quam aut numquam
               maxime. Officiis, atque.
-            </span>
-          </div>
-        </div>
-        <div className="bottom">
-          <div className="left">
-            <span className="logo">Chef&#39;s Kingdom</span>
-            <span className="copyright">
-              Copyright 2023. All Rights Reserved
-            </span>
-          </div>
-          {/* <div className="right">
-          <img src="./images/payment-gateway.png" alt="payment gateway" />
-        </div> */}
-        </div>
-      </div>
-    </div>
+            </Box>
+          </Box>
+        </SimpleGrid>
+        <Box className="bottom">
+          <Box className="left">
+            <Box
+              as="h4"
+              fontSize="1.6rem"
+              bgImg="https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              bgSize="cover"
+              bgPos="center"
+              bgClip="text"
+            >
+              Chef&#39;s Kingdom
+            </Box>
+            <Box className="copyright">Copyright 2023. All Rights Reserved</Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
