@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Slider.css";
+import { Box, Image } from "@chakra-ui/react";
 
 const Slider = () => {
   const progressCircle = useRef(null);
@@ -18,7 +19,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="hero-slider">
+    <Box className="hero-slider">
       <Navbar />
       <Swiper
         spaceBetween={30}
@@ -37,18 +38,25 @@ const Slider = () => {
       >
         {heroSliderData.map((item, index) => (
           <SwiperSlide key={index} className="swiper-slide">
-            <img src={item.path} alt={item.altText} />
+            <Image
+              w="100%"
+              h="100%"
+              objectFit="cover"
+              filter="brightness(0.8)"
+              src={item.path}
+              alt={item.altText}
+            />
           </SwiperSlide>
         ))}
 
-        <div className="autoplay-progress" slot="container-end">
+        <Box className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
           </svg>
           <span ref={progressContent}></span>
-        </div>
+        </Box>
       </Swiper>
-    </div>
+    </Box>
   );
 };
 

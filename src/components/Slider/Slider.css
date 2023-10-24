@@ -8,11 +8,6 @@
   height: auto;
 }
 
-.swiper-slide img {
-  /* object-fit: cover; */
-  filter: brightness(0.8);
-}
-
 .autoplay-progress {
   position: absolute;
   right: 16px;
