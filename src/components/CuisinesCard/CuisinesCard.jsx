@@ -4,7 +4,7 @@ import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Image } from "@chakra-ui/react";
 
 const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -22,7 +22,12 @@ const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
   return (
     <Box className="center-container">
       <Box className="cuisineCard">
-        <img className="cuisineCard-img" src={img} alt="" />
+        <Image
+          className="cuisineCard-img"
+          src={img}
+          alt={recipeName}
+          height={200}
+        />
         <Box className="cuisineCard-body">
           <Box className="heading">
             <Heading color="teal.400" fontSize="1.5rem" fontWeight="500">

@@ -1,11 +1,11 @@
 .cuisineCard {
-  width: 350px;
+  max-width: 350px;
   padding: 0.8rem;
   border-radius: 4px;
   box-shadow: 0 0 1px 1px #0071f32e;
 }
 .cuisineCard-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 4px;
   object-fit: cover;
