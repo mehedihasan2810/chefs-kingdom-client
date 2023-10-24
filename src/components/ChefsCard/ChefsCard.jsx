@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link, Link as ReactRouterLink } from "react-router-dom";
 
 import {
   Box,
@@ -52,16 +52,18 @@ const ChefsCard = ({ id, name, img, experience }) => {
           as={ReactRouterLink}
           to={`/chefs/${id}`}
         >
-          <Button
-            w="100%"
-            colorScheme="teal"
-            bgGradient="linear(to-r, teal.500, green.500)"
-            _hover={{
-              bgGradient: "linear(to-r, red.500, yellow.500)",
-            }}
-          >
-            View My Recipes
-          </Button>
+          <Link to={`chefs/${id}`}>
+            <Button
+              w="100%"
+              colorScheme="teal"
+              bgGradient="linear(to-r, teal.500, green.500)"
+              _hover={{
+                bgGradient: "linear(to-r, red.500, yellow.500)",
+              }}
+            >
+              View My Recipes
+            </Button>
+          </Link>
         </ChakraLink>
       </Box>
     </Box>

@@ -2,28 +2,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin: 100px 0;
+  margin-block-start: 100px;
+  padding-inline: 8px;
+  max-width: 1000px;
+  margin-inline: auto;
 }
 
 .cuisine-hero .img-container {
   place-self: center;
 }
 
-.cuisine-hero img {
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 15px solid #0070f3;
-}
-
 .hero-body {
   place-self: center;
-}
-
-.hero-body h1 {
-  font-size: 5rem;
-  color: #0070f3;
 }
 
 .hero-body p {
@@ -41,13 +31,5 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     margin: 40px 0;
-  }
-  .hero-body h1 {
-    font-size: 4rem;
-    color: #0070f3;
-  }
-  .cuisine-hero img {
-    max-width: 100%;
-    height: auto;
   }
 }

@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import "./CuisineCard.css";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { Box, Heading } from "@chakra-ui/react";
 
 const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -18,12 +20,14 @@ const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
   };
 
   return (
-    <div className="center-container">
-      <div className="cuisineCard">
+    <Box className="center-container">
+      <Box className="cuisineCard">
         <img className="cuisineCard-img" src={img} alt="" />
-        <div className="cuisineCard-body">
-          <div className="heading">
-            <h4>{recipeName}</h4>
+        <Box className="cuisineCard-body">
+          <Box className="heading">
+            <Heading color="teal.400" fontSize="1.5rem" fontWeight="500">
+              {recipeName}
+            </Heading>
             <button
               className="disabled"
               disabled={isDisabled}
@@ -36,23 +40,23 @@ const CuisinesCard = ({ recipeName, ingredients, img, method, ratings }) => {
                 }}
               />
             </button>
-          </div>
+          </Box>
           <p className="rating">
             <StarIcon sx={{ color: "#ffb413" }} /> {ratings}/5(100+)
           </p>
-          <div className="ingredients">
+          <Box className="ingredients">
             <h5>Ingredients: </h5>
             {ingredients.map((item, index) => (
               <p key={index}>{item}</p>
             ))}
-          </div>
-          <div className="method">
+          </Box>
+          <Box className="method">
             <h5>Method: </h5>
             <p>{method}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

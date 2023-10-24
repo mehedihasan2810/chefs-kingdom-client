@@ -31,16 +31,9 @@ const Navbar = () => {
       .then(() => {
         // *show toast
         if (currentUser) {
-          // toast.success("Succesfully Signed Out", {
-          //   position: toast.POSITION.TOP_CENTER,
-          //   autoClose: 2000,
-          // });
-
-          toast({
-            title: "Succesfully Signed Out",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
+          toast.success("Succesfully Signed Out", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
           });
 
           navigate("/");
@@ -48,15 +41,9 @@ const Navbar = () => {
       })
       .catch((error) => {
         // *show toast
-        // toast.error(error.message, {
-        //   position: toast.POSITION.TOP_CENTER,
-        //   autoClose: 2000,
-        // });
-        toast({
-          title: error.message,
-          status: "error",
-          duration: 2000,
-          isClosable: true,
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
         });
       });
   };
