@@ -1,94 +1,76 @@
 import { Link } from "react-router-dom";
 import "./Categories.css";
+import {
+  AbsoluteCenter,
+  Box,
+  Button,
+  Center,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
+import { categoryData } from "./data";
 const Categories = () => {
   return (
-    <div>
-      <div className="section-title">
-        <div className="line"></div>
-        <h2>Categories</h2>
-        <div className="line"></div>
-      </div>
-      <div className="categories">
-        <div className="col">
-          <div className="row">
-            <img
-              src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              alt=""
+    <Box
+      as="section"
+      py={["60px", null, "80px", "120px"]}
+      px="8px"
+      bgGradient="linear(to-b,#FFF2D8, transparent)"
+    >
+      <Center mb="40px">
+        <Box>
+          <Heading
+            as="h2"
+            textAlign="center"
+            color="gray.700"
+            fontSize={["2rem", null, "2.3rem"]}
+          >
+            Featured Cuisines
+          </Heading>
+          <Text textAlign="center" maxW="60ch" mt="10px" color="gray.600">
+            Featuring Our top selling and top rated recipe this month
+          </Text>
+        </Box>
+      </Center>
+
+      <Grid
+        className="category-grid"
+        h={["800px", null, "600px", "800px"]}
+        overflow="hidden"
+        templateRows={["repeat(3, 1fr)", null, "repeat(2, 1fr)"]}
+        templateColumns={[
+          "repeat(1, 1fr)",
+          null,
+          null,
+          "repeat(3, 1fr)",
+          "repeat(4, 1fr)",
+        ]}
+        gap={4}
+      >
+        {categoryData.map((item) => (
+          <GridItem key={item.id} overflow="hidden" position="relative">
+            <Image
+              borderRadius="md"
+              w="100%"
+              h="100%"
+              objectFit="cover"
+              src={item.img}
+              alt={item.btnText}
             />
-            <button>
-              <Link className="link" to="/">
-                Pasta
+            <AbsoluteCenter>
+              <Link to={item.path}>
+                <Button colorScheme={item.btnColor} size="lg">
+                  {item.btnText}
+                </Button>
               </Link>
-            </button>
-          </div>
-          <div className="row">
-            <img
-              src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=781&q=80"
-              alt=""
-            />
-            <button>
-              <Link to="/" className="link">
-                Pizza
-              </Link>
-            </button>
-          </div>
-        </div>
-        <div className="col">
-          <div className="row">
-            <img
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              alt=""
-            />
-            <button>
-              <Link to="/" className="link">
-                Kabab
-              </Link>
-            </button>
-          </div>
-        </div>
-        <div className="col col-l">
-          <div className="row">
-            <div className="col">
-              <div className="row">
-                <img
-                  src="https://images.unsplash.com/photo-1600803907087-f56d462fd26b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
-                  alt=""
-                />
-                <button>
-                  <Link to="/" className="link">
-                    Noodles
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="col">
-              <div className="row">
-                <img
-                  src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                  alt=""
-                />
-                <button>
-                  <Link to="/" className="link">
-                    Vegetables
-                  </Link>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <img
-              src="https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              alt=""
-            />
-            <button>
-              <Link to="/" className="link">
-                Chicken
-              </Link>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </AbsoluteCenter>
+          </GridItem>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 
