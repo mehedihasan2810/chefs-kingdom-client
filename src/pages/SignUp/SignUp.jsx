@@ -4,6 +4,19 @@ import { useState } from "react";
 import "./SignUp.css";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  VStack,
+  Link as ChakraLink,
+  Divider,
+  AbsoluteCenter,
+} from "@chakra-ui/react";
+import PageNavbar from "../../components/PageNavbar/PageNavbar";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -45,6 +58,8 @@ const SignUp = () => {
         });
 
         // * reset state
+        setName("");
+        setPhotoUrl("");
         setEmail("");
         setPassword("");
         setIsSignUpLoading(false);
@@ -67,6 +82,7 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((userCredential) => {
+        // eslint-disable-next-line no-unused-vars
         const loggedUser = userCredential.user;
 
         // *show toast
@@ -90,6 +106,7 @@ const SignUp = () => {
 
   const handleGitHubSignIn = () => {
     gitHubSignIn()
+      // eslint-disable-next-line no-unused-vars
       .then((userCredential) => {
         // *show toast
         toast.success("Succesfully Signed In", {
@@ -111,93 +128,105 @@ const SignUp = () => {
   };
 
   return (
-    <section>
-      <div className="signup-container">
-        <h2>Sign Up</h2>
+    <Box as="section">
+      <Box maxW="1200px" mx="auto">
+        <PageNavbar />
+      </Box>
+      <Box maxW="450px" my="120px" mx="auto" padding="20px">
+        <Heading
+          as="h6"
+          fontSize="1.5rem"
+          fontWeight="500"
+          mb="20px"
+          color="teal.500"
+        >
+          Sign Up
+        </Heading>
         <form onSubmit={handleSignUp} className="signup">
-          <div className="control">
-            <label htmlFor="name">Name: </label>
-            <input
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Name"
-              required
-            />
-          </div>
-          <div className="control">
-            <label htmlFor="url">Photo Url: </label>
-            <input
-              value={photoUrl}
-              onChange={(e) => {
-                setPhotoUrl(e.target.value);
-              }}
-              type="text"
-              name="url"
-              id="url"
-              placeholder="Photo Url"
-              required
-            />
-          </div>
-          <div className="control">
-            <label htmlFor="email">Email: </label>
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="control">
-            <label htmlFor="password">Password: </label>
-            <input
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              required
-            />
-          </div>
-          <button className="btn-primary" type="submit">
-            {isSignUpLoading ? <div className="loader"></div> : "Sign Up"}
-          </button>
+          <VStack spacing="20px">
+            <FormControl isRequired>
+              <FormLabel>Name</FormLabel>
+              <Input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Type Your Name..."
+                size="lg"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Photo URL</FormLabel>
+              <Input
+                value={photoUrl}
+                onChange={(e) => setPhotoUrl(e.target.value)}
+                type="text"
+                placeholder="Place Your Photo URL..."
+                size="lg"
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Email Address</FormLabel>
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Type your email..."
+                size="lg"
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Password</FormLabel>
+              <Input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Type your password..."
+                size="lg"
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              isLoading={isSignUpLoading}
+              loadingText="Signing In..."
+              colorScheme="teal"
+              size="lg"
+              w="100%"
+            >
+              Sign In
+            </Button>
+          </VStack>
         </form>
-        <p className="account">
+        <Box textAlign="center" mt="14px">
           Already have an account?{" "}
-          <Link className="acc" to="/signin">
-            SingIn
-          </Link>
-        </p>
-        <div className="section-title">
-          <div className="line"></div>
-          <h4>OR</h4>
-          <div className="line"></div>
-        </div>
-        <div className="google-github">
-          <GoogleButton
-            onClick={handleGoogleSignIn}
-            type="light"
-            className="google-btn"
-          />
-          <button onClick={handleGitHubSignIn} className="github">
+          <ChakraLink as={Link} color="teal" to="/signin">
+            Sing In
+          </ChakraLink>
+        </Box>
+        <Box position="relative" padding="10">
+          <Divider />
+          <AbsoluteCenter bg="white" px="4">
+            OR
+          </AbsoluteCenter>
+        </Box>
+        <Box>
+          <GoogleButton onClick={handleGoogleSignIn} className="google-btn" />
+          <Button
+            bg="#25292e"
+            color="#fff"
+            mt="20px"
+            size="lg"
+            w="100%"
+            onClick={handleGitHubSignIn}
+            _hover={{
+              opacity: "0.8",
+            }}
+          >
             Sign in with Github
-          </button>
-        </div>
-      </div>
-    </section>
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

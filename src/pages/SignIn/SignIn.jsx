@@ -111,13 +111,7 @@ const SignIn = () => {
       <Box maxW="1200px" mx="auto">
         <PageNavbar />
       </Box>
-      <Box
-        className="signin-container"
-        maxW="450px"
-        my="120px"
-        mx="auto"
-        padding="20px"
-      >
+      <Box maxW="450px" my="120px" mx="auto" padding="20px">
         <Heading
           as="h6"
           fontSize="1.5rem"
@@ -127,16 +121,24 @@ const SignIn = () => {
         >
           Sign In
         </Heading>
-        <form onSubmit={handleSignIn} className="signin">
+        <form onSubmit={handleSignIn}>
           <VStack spacing="20px">
             <FormControl isRequired>
               <FormLabel>Email Address</FormLabel>
-              <Input type="email" placeholder="Type your email..." size="lg" />
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Type your email..."
+                size="lg"
+              />
             </FormControl>
 
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
               <Input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 placeholder="Type your password..."
                 size="lg"
