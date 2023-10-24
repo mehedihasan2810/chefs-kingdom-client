@@ -1,32 +1,28 @@
-import {
-  NavLink,
-  useLoaderData,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import CuisinesCard from "../../components/cuisinesCard/cuisinesCard";
 import "./Cuisines.css";
 import CuisineHero from "../../components/CuisineHero/CuisineHero";
 import { useEffect, useState } from "react";
 import {
   Box,
-  Circle,
-  Flex,
+  // Circle,
+  // Flex,
   Heading,
-  Hide,
-  Show,
-  useDisclosure,
-  Avatar,
-  Button,
-  List,
-  ListItem,
-  Link as ChakraLink,
+  // Hide,
+  // Show,
+  // useDisclosure,
+  // Avatar,
+  // Button,
+  // List,
+  // ListItem,
+  // Link as ChakraLink,
 } from "@chakra-ui/react";
-import { navbarData } from "../../components/Navbar/data";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import DrawerNavbar from "../../components/Navbar/DrawerNavbar";
-import { useAuthContext } from "../../contexts/AuthProvider";
-import { toast } from "react-toastify";
+// import { navbarData } from "../../components/Navbar/data";
+// import { HamburgerIcon } from "@chakra-ui/icons";
+// import DrawerNavbar from "../../components/Navbar/DrawerNavbar";
+// import { useAuthContext } from "../../contexts/AuthProvider";
+// import { toast } from "react-toastify";
+import PageNavbar from "../../components/PageNavbar/PageNavbar";
 
 const Cuisines = () => {
   const [chef, setChef] = useState([]);
@@ -34,32 +30,32 @@ const Cuisines = () => {
   const data = useLoaderData();
   const { id } = useParams();
 
-  const { currentUser, logOut } = useAuthContext();
-  const navigate = useNavigate();
+  // const { currentUser, logOut } = useAuthContext();
+  // const navigate = useNavigate();
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSignOut = () => {
-    logOut()
-      .then(() => {
-        // *show toast
-        if (currentUser) {
-          toast.success("Succesfully Signed Out", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 2000,
-          });
+  // const handleSignOut = () => {
+  //   logOut()
+  //     .then(() => {
+  //       // *show toast
+  //       if (currentUser) {
+  //         toast.success("Succesfully Signed Out", {
+  //           position: toast.POSITION.TOP_CENTER,
+  //           autoClose: 2000,
+  //         });
 
-          navigate("/");
-        }
-      })
-      .catch((error) => {
-        // *show toast
-        toast.error(error.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000,
-        });
-      });
-  };
+  //         navigate("/");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       // *show toast
+  //       toast.error(error.message, {
+  //         position: toast.POSITION.TOP_CENTER,
+  //         autoClose: 2000,
+  //       });
+  //     });
+  // };
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -101,7 +97,8 @@ const Cuisines = () => {
 
   return (
     <Box as="section" maxW="1200px" mx="auto" className="cuisine-container">
-      <Flex
+      <PageNavbar />
+      {/* <Flex
         maxW="1800px"
         mx="auto"
         px="16px"
@@ -187,7 +184,6 @@ const Cuisines = () => {
             </List>
           </Box>
         </Show>
-        {/* hamburger menu for mobile start */}
         <Hide above="lg">
           <Circle
             onClick={onOpen}
@@ -210,8 +206,7 @@ const Cuisines = () => {
             navbarData={navbarData}
           />
         </Hide>
-        {/* hamburger menu for mobile end */}
-      </Flex>
+      </Flex> */}
 
       <CuisineHero chef={chef} />
       <Box py={["60px", null, "80px"]} px="8px" className="cuisines">

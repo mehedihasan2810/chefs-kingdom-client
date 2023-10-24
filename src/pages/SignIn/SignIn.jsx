@@ -1,9 +1,21 @@
 import GoogleButton from "react-google-button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./SignIn.css";
 import { useAuthContext } from "../../contexts/AuthProvider";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import PageNavbar from "../../components/PageNavbar/PageNavbar";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link as ChakraLink,
+  Divider,
+  AbsoluteCenter,
+  VStack,
+} from "@chakra-ui/react";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +31,7 @@ const SignIn = () => {
     setIsSignInLoading(true);
     signIn(email, password)
       .then((userCredential) => {
+        // eslint-disable-next-line no-unused-vars
         const loggedUser = userCredential.user;
 
         // *show toast
@@ -48,6 +61,7 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((userCredential) => {
+        // eslint-disable-next-line no-unused-vars
         const loggedUser = userCredential.user;
 
         // *show toast
@@ -71,6 +85,7 @@ const SignIn = () => {
 
   const handleGitHubSignIn = () => {
     gitHubSignIn()
+      // eslint-disable-next-line no-unused-vars
       .then((userCredential) => {
         // *show toast
         toast.success("Succesfully Signed In", {
@@ -92,69 +107,84 @@ const SignIn = () => {
   };
 
   return (
-    <section>
-      <div className="signin-container">
-        <h2>Sign In</h2>
+    <Box as="section">
+      <Box maxW="1200px" mx="auto">
+        <PageNavbar />
+      </Box>
+      <Box
+        className="signin-container"
+        maxW="450px"
+        my="120px"
+        mx="auto"
+        padding="20px"
+      >
+        <Heading
+          as="h6"
+          fontSize="1.5rem"
+          fontWeight="500"
+          mb="20px"
+          color="teal.500"
+        >
+          Sign In
+        </Heading>
         <form onSubmit={handleSignIn} className="signin">
-          <div className="control">
-            <label htmlFor="email">Email: </label>
-            <input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-            />
-          </div>
-          <div className="control">
-            <label htmlFor="password">Password: </label>
-            <input
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-            />
-          </div>
-          <button className="btn-primary" type="submit">
-          {
-              isSignInLoading ? (
-                <div className="loader"></div>
-              ): (
-                "Sign In"
-              )
-            }
-          </button>
+          <VStack spacing="20px">
+            <FormControl isRequired>
+              <FormLabel>Email Address</FormLabel>
+              <Input type="email" placeholder="Type your email..." size="lg" />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Password</FormLabel>
+              <Input
+                type="password"
+                placeholder="Type your password..."
+                size="lg"
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              isLoading={isSignInLoading}
+              loadingText="Signing In..."
+              colorScheme="teal"
+              size="lg"
+              w="100%"
+            >
+              Sign In
+            </Button>
+          </VStack>
         </form>
-        <p className="account">
+
+        <Box textAlign="center" mt="14px">
           Don&#39;t have an account?{" "}
-          <Link className="acc" to="/signup">
+          <ChakraLink as={Link} color="teal" to="/signup">
             SingUp
-          </Link>
-        </p>
-        <div className="section-title">
-          <div className="line"></div>
-          <h4>OR</h4>
-          <div className="line"></div>
-        </div>
-        <div className="google-github">
-          <GoogleButton
-            onClick={handleGoogleSignIn}
-            type="light"
-            className="google-btn"
-          />
-          <button onClick={handleGitHubSignIn} className="github">
+          </ChakraLink>
+        </Box>
+        <Box position="relative" padding="10">
+          <Divider />
+          <AbsoluteCenter bg="white" px="4">
+            OR
+          </AbsoluteCenter>
+        </Box>
+        <Box className="google-github">
+          <GoogleButton onClick={handleGoogleSignIn} className="google-btn" />
+          <Button
+            bg="#25292e"
+            color="#fff"
+            mt="20px"
+            size="lg"
+            w="100%"
+            onClick={handleGitHubSignIn}
+            _hover={{
+              opacity: "0.8",
+            }}
+          >
             Sign in with Github
-          </button>
-        </div>
-      </div>
-    </section>
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
