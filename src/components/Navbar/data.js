@@ -6,8 +6,8 @@ export const navbarData = [
   },
   {
     id: 2,
-    path: "/recipe",
-    text: "Our Recipe",
+    path: "/chefs/1",
+    text: "Our Cuisines",
   },
   {
     id: 3,
@@ -18,5 +18,5 @@ export const navbarData = [
     id: 4,
     path: "#",
     text: "Our Shop",
-  }
+  },
 ];

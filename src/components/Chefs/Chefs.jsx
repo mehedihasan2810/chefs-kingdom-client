@@ -1,6 +1,24 @@
 import { useLoaderData } from "react-router-dom";
 import ChefsCard from "../ChefsCard/ChefsCard";
 import { Box, Center, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+
+const chef1 = {
+  id: 2,
+  name: "Gordon Ramsey",
+  img: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=1954&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  experience: 3,
+  recipes: 15,
+  likes: 10,
+};
+const chef2 = {
+  id: 3,
+  name: "Robert Lewan",
+  img: "https://plus.unsplash.com/premium_photo-1661349726691-d5efab008d77?auto=format&fit=crop&q=80&w=2069&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  experience: 3,
+  recipes: 15,
+  likes: 10,
+};
+
 const Chefs = () => {
   const data = useLoaderData();
   return (
@@ -29,12 +47,14 @@ const Chefs = () => {
       <SimpleGrid
         w="fit-content"
         mx="auto"
-        columns={[1, 2, null, 3]}
+        columns={[1, null, 2, 3, 4]}
         spacing="20px"
       >
-        {data.map((item) => (
-          <ChefsCard key={item.id} {...item} />
+        {data.map((item, index) => (
+          <ChefsCard key={item.id} {...item} index={index} />
         ))}
+        <ChefsCard {...chef1} index={6} />
+        <ChefsCard {...chef2} index={7} />
       </SimpleGrid>
     </Box>
   );

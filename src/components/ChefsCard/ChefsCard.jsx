@@ -11,7 +11,18 @@ import {
 } from "@chakra-ui/react";
 import { containerStyles } from "./styles";
 
-const ChefsCard = ({ id, name, img, experience }) => {
+const city = [
+  "New York",
+  "Paris, France",
+  "Munic, Germany",
+  "Madrid, Spain",
+  "New York",
+  "Paris, France",
+  "Munic, Germany",
+  "Madrid, Spain",
+];
+
+const ChefsCard = ({ id, name, img, experience, index }) => {
   return (
     <Box
       boxShadow="xs"
@@ -42,7 +53,7 @@ const ChefsCard = ({ id, name, img, experience }) => {
         <Heading as="h6" color="gray.200" fontSize="1.6rem" fontWeight="500">
           {name}
         </Heading>
-        <Text color="gray.300">New York</Text>
+        <Text color="gray.300">{city[index]}</Text>
         <Text color="gray.300">{experience} years of experience</Text>
 
         <ChakraLink
