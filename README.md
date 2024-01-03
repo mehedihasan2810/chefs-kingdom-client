@@ -10,4 +10,4 @@
 
 ## [Home page](https://chefs-kingdom-96f43.firebaseapp.com)
 
-![Chefs kingdom home page image](/public/assets/chefs-kingdom-home.png)
+![Chefs kingdom home page image](/public/assets/chefs-kingdom-home.webp)
